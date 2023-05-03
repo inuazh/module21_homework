@@ -1,5 +1,5 @@
 # module21_homework
-# пейджес https://inuazhjs.github.io/module21_homework
+## пейджес https://inuazhjs.github.io/module21_homework
 
 
 для задания 21, тут 6 разных заданий, самое главное последнее, задача звучала как "
