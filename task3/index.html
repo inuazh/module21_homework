@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // проверяем, есть ли в localStorage информация о пользователе
+if (localStorage.getItem('userName')) {
+  // если есть, выводим сообщение с приветствием и датой последнего посещения
+  const userName = localStorage.getItem('userName');
+  const lastVisitDate = localStorage.getItem('visitDate');
+  alert(`Добрый день, ${userName}! Давно не виделись. В последний раз вы были у нас ${lastVisitDate}`);
+
+  // записываем новую дату посещения в localStorage
+  localStorage.setItem('visitDate', new Date().toLocaleString());
+} else {
+  // если нет, выводим окно prompt с запросом имени
+  const userName = prompt('Добро пожаловать! Назовите, пожалуйста, ваше имя', '');
+
+  // записываем имя и дату/время визита в localStorage
+  localStorage.setItem('userName', userName);
+  localStorage.setItem('visitDate', new Date().toLocaleString());
+}
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>задача звучала как "создать JS-объект, который при преобразовании в JSON будет возвращать в качестве результата такую же JSON-строку, как в образцеПолучившуюся строку вывести в консоль"
+    
+
+        open console
+</h1>
+
+<script>
+const person = {
+  name: "Anton",
+  age: 36,
+  skills: ["Javascript", "HTML", "CSS"],
+  salary: 80000,
+};
+
+const jsonStr = JSON.stringify(person);
+
+console.log(jsonStr);
+
+</script>
+</body>
+</html>
+

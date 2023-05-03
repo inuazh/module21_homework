@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="script.js" async></script>
+</head>
+<body>
+
+    <!DOCTYPE html>
+<html>
+  <head>
+    <title>Список задач</title>
+  </head>
+  <body>
+    <label for="user-id">Введите id пользователя:</label>
+    <input type="text" id="user-id" name="user-id">
+    <button id="get-todos">Получить список задач</button>
+
+    <div id="todos-container"></div>
+
+    <script>
+      const todosContainer = document.getElementById('todos-container');
+      const userIdInput = document.getElementById('user-id');
+      const getTodosBtn = document.getElementById('get-todos');
+
+      getTodosBtn.addEventListener('click', () => {
+        const userId = userIdInput.value;
+
+        fetch(`https://jsonplaceholder.typicode.com/users/${userId}/todos`)
+          .then((response) => {
+            if (response.ok) {
+              return response.json();
+            } else if (response.status === 404) {
+              alert('Пользователь с указанным id не найден');
+            } else {
+              alert('Произошла ошибка при получении списка задач');
+            }
+          })
+          .then((todos) => {
+            const ul = document.createElement('ul');
+
+            for (const todo of todos) {
+              const li = document.createElement('li');
+              li.textContent = todo.title;
+              if (todo.completed) {
+                li.style.textDecoration = 'line-through';
+              }
+              ul.appendChild(li);
+            }
+
+            todosContainer.innerHTML = '';
+            todosContainer.appendChild(ul);
+          })
+
+      });
+    </script>
+  </body>
+</html>
+
+    
+</body>
+</html>

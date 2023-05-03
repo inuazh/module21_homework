@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h1>open console</h1>
+    <script>
+  
+  
+  const xmlString = `<list>
+  <student>
+    <name lang="en">
+      <first>Ivan</first>
+      <second>Ivanov</second>
+    </name>
+    <age>35</age>
+    <prof>teacher</prof>
+  </student>
+  <student>
+    <name lang="ru">
+      <first>Петр</first>
+      <second>Петров</second>
+    </name>
+    <age>58</age>
+    <prof>driver</prof>
+  </student>
+</list>`;
+
+const parser = new DOMParser();
+const xmlDoc = parser.parseFromString(xmlString, 'text/xml');
+
+const students = [];
+
+const studentNodes = xmlDoc.getElementsByTagName('student');
+for (let i = 0; i < studentNodes.length; i++) {
+  const student = {};
+  const nameNode = studentNodes[i].getElementsByTagName('name')[0];
+  student.firstName = nameNode.getElementsByTagName('first')[0].textContent;
+  student.lastName = nameNode.getElementsByTagName('second')[0].textContent;
+  student.age = parseInt(studentNodes[i].getElementsByTagName('age')[0].textContent);
+  student.profession = studentNodes[i].getElementsByTagName('prof')[0].textContent;
+  student.language = nameNode.getAttribute('lang');
+  students.push(student);
+}
+
+console.log(students);
+
+
+    </script>
+</body>
+
+</html>
